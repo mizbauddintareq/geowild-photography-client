@@ -1,10 +1,12 @@
+import Services from "../Services/Services";
 import Slider from "../Slider/Slider";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Slider />
-    </div>
+      <Services />
+    </>
   );
 };
 

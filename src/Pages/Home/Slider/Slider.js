@@ -1,6 +1,6 @@
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
-import "react-awesome-slider/dist/custom-animations/cube-animation.css";
+import "react-awesome-slider/dist/custom-animations/fall-animation.css";
 import withAutoplay from "react-awesome-slider/dist/autoplay";
 import slide1 from "../../../assets/slider-img/slide-1.jpg";
 import slide2 from "../../../assets/slider-img/slide-2.jpg";
@@ -13,9 +13,9 @@ const Slider = () => {
     <AutoplaySlider
       play={true}
       cancelOnInteraction={false} // should stop playing on user interaction
-      interval={6000}
+      interval={4000}
       bullets={false}
-      animation="cubeAnimation"
+      animation="fallAnimation"
     >
       <div data-src={slide1} />
       <div data-src={slide2} />
