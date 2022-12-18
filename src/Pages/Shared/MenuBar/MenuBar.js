@@ -13,7 +13,9 @@ const MenuBar = () => {
               <Link to="/" className="nav-link">
                 Home
               </Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Link to="/login" className="nav-link">
+                login
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
