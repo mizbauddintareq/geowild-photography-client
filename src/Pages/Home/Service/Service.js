@@ -1,10 +1,25 @@
 import { Card, Col } from "react-bootstrap";
-
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 const Service = ({ data }) => {
   return (
     <Col>
       <Card className="h-100">
-        <Card.Img variant="top" src={data?.img} />
+        <PhotoProvider
+          variant="top"
+          className="card-img"
+          speed={() => 800}
+          easing={(type) =>
+            type === 2
+              ? "cubic-bezier(0.36, 0, 0.66, -0.56)"
+              : "cubic-bezier(0.34, 1.56, 0.64, 1)"
+          }
+        >
+          <PhotoView src={data?.img}>
+            <img src={data?.img} alt="" />
+          </PhotoView>
+        </PhotoProvider>
+
         <Card.Body>
           <Card.Title>{data?.name}</Card.Title>
           <Card.Text>

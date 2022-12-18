@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import Service from "../Service/Service";
 
@@ -12,6 +13,7 @@ const Services = () => {
       .then((data) => setServices(data))
       .catch((err) => console.error(err));
   }, []);
+
   return (
     <Container>
       <Row xs={1} md={3} className="g-4">
@@ -20,7 +22,9 @@ const Services = () => {
         ))}
       </Row>
       <div>
-        <Button variant="primary">See all</Button>
+        <Link to="/services/all">
+          <Button variant="primary">See all</Button>
+        </Link>
       </div>
     </Container>
   );
