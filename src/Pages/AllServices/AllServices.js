@@ -1,6 +1,6 @@
 import { Row } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
-import Service from "../Service/Service";
+import Service from "../Home/Service/Service";
 
 const AllServices = () => {
   const allServices = useLoaderData();

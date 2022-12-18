@@ -1,6 +1,7 @@
-import { Card, Col } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import { Link } from "react-router-dom";
 const Service = ({ data }) => {
   return (
     <Col>
@@ -26,6 +27,9 @@ const Service = ({ data }) => {
             This is a longer card with supporting text below as a natural
             lead-in to additional content. This content is a little bit longer.
           </Card.Text>
+          <Link to={`/services/${data?._id}`}>
+            <Button variant="danger">See Details</Button>
+          </Link>
         </Card.Body>
       </Card>
     </Col>
