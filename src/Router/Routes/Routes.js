@@ -6,6 +6,9 @@ import Registration from "../../Pages/Authentication/Registration/Registration";
 import Home from "../../Pages/Home/Home/Home";
 
 import NotFound404 from "../../Pages/NotFound404/NotFound404";
+import AddReview from "../../Pages/Reviews/AddReview/AddReview";
+import MyReviews from "../../Pages/Reviews/MyReviews/MyReviews";
+import Reviews from "../../Pages/Reviews/Reviews/Reviews";
 import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails";
 
 export const router = createBrowserRouter([
@@ -35,6 +38,20 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/service/${params.id}`),
         element: <ServiceDetails />,
+      },
+      {
+        path: "review/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/service/${params.id}`),
+        element: <AddReview />,
+      },
+      {
+        path: "reviews",
+        element: <Reviews />,
+      },
+      {
+        path: "myReviews",
+        element: <MyReviews />,
       },
     ],
   },

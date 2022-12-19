@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-export const sweetToast = () => {
+export const sweetToast = (message) => {
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -15,6 +15,6 @@ export const sweetToast = () => {
 
   Toast.fire({
     icon: "success",
-    title: "Signed in successfully",
+    title: `${message}`,
   });
 };
