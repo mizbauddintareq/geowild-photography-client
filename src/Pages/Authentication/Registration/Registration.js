@@ -1,10 +1,15 @@
 import { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../context/AuthProvider";
 import { sweetToast } from "../../../utilities/sweetToast";
 const Registration = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const { createUser, updateUser, googleLogin } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
@@ -18,6 +23,7 @@ const Registration = () => {
         handleUpdateUser({ displayName: name });
         sweetToast("Registration successful");
         reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -38,6 +44,7 @@ const Registration = () => {
     googleLogin()
       .then((result) => {
         sweetToast("Registration successful");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;

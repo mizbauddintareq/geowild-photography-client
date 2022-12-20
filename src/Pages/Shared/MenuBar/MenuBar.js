@@ -10,7 +10,9 @@ const MenuBar = () => {
       <Navbar expand="lg">
         <Container>
           <Navbar.Brand>
-            <h1 className="logo">Geo Wild Photography</h1>
+            <Link className="text-decoration-none" to="/">
+              <h1 className="logo">Geo Wild Photography</h1>
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -18,19 +20,26 @@ const MenuBar = () => {
               <Link to="/" className="nav-link">
                 Home
               </Link>
+              <Link to="/addService" className="nav-link">
+                Add Service
+              </Link>
               {user?.uid ? (
                 <>
+                  <Link to="/myReviews" className="nav-link">
+                    My Reviews
+                  </Link>
+
                   <Button
                     onClick={userLogOut}
                     className="fw-bold"
                     variant="light"
                   >
-                    logout
+                    Logout
                   </Button>
                 </>
               ) : (
                 <Link to="/login" className="nav-link">
-                  login
+                  Login
                 </Link>
               )}
             </Nav>
