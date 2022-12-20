@@ -10,3 +10,6 @@ body {
 .carousel-indicators {
   display: none;
 }
+.slider-info {
+  background-color: rgba(0, 0, 0, 0.4);
+}
