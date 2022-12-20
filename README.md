@@ -1,6 +1,6 @@
 # GEO WILD PHOTOGRAPHY
 
-Web Development Course Related Website.
+Wild Photography Related Website.
 
 [live link](https://geowild-photography.web.app//)
 
