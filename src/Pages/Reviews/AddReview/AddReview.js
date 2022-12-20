@@ -8,7 +8,7 @@ const AddReview = () => {
   const serviceDetails = useLoaderData();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/review", {
+    fetch("https://geowild-photography-server.vercel.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

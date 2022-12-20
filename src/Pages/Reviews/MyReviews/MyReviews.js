@@ -6,16 +6,31 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const MyReviews = () => {
-  const { user } = useContext(AuthContext);
+  const { user, userLogOut } = useContext(AuthContext);
+
   const [myReviews, setMyReviews] = useState();
+
   useEffect(() => {
-    fetch(`http://localhost:5000/myReviews?email=${user?.email}`)
-      .then((res) => res.json())
+    fetch(
+      `https://geowild-photography-server.vercel.app/myReviews?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("geo-token")}`,
+        },
+      }
+    )
+      .then((res) => {
+        if (res.status === 403 || res.status === 401) {
+          return userLogOut();
+        }
+        return res.json();
+      })
       .then((data) => {
+        console.log(data);
         setMyReviews(data);
       })
       .catch((err) => console.error(err));
-  }, [user?.email]);
+  }, [user?.email, userLogOut]);
 
   const handleDelete = (id) => {
     console.log(id);
@@ -29,7 +44,7 @@ const MyReviews = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/review/${id}`, {
+        fetch(`https://geowild-photography-server.vercel.app/review/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

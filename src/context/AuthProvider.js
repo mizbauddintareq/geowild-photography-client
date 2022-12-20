@@ -44,7 +44,9 @@ const AuthProvider = ({ children }) => {
 
   const userLogOut = () => {
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        localStorage.removeItem("geo-token");
+      })
       .catch((error) => {});
   };
 

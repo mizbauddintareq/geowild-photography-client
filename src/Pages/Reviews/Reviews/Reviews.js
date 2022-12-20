@@ -5,7 +5,9 @@ const Reviews = ({ serviceName }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?service=${serviceName}`)
+    fetch(
+      `https://geowild-photography-server.vercel.app/reviews?service=${serviceName}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

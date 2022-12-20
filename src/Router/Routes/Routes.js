@@ -41,19 +41,24 @@ export const router = createBrowserRouter([
       },
       {
         path: "/services/all",
-        loader: () => fetch("http://localhost:5000/services/all"),
+        loader: () =>
+          fetch("https://geowild-photography-server.vercel.app/services/all"),
         element: <AllServices />,
       },
       {
         path: "/services/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/service/${params.id}`),
+          fetch(
+            `https://geowild-photography-server.vercel.app/service/${params.id}`
+          ),
         element: <ServiceDetails />,
       },
       {
         path: "review/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/service/${params.id}`),
+          fetch(
+            `https://geowild-photography-server.vercel.app/service/${params.id}`
+          ),
         element: <AddReview />,
       },
       {
@@ -62,12 +67,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "myReviews",
-        element: <MyReviews />,
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/editReview/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/review/${params.id}`),
+          fetch(
+            `https://geowild-photography-server.vercel.app/review/${params.id}`
+          ),
         element: <EditReview />,
       },
     ],

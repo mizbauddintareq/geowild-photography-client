@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../context/AuthProvider";
+
 import { sweetToast } from "../../../utilities/sweetToast";
 const Login = () => {
   const navigate = useNavigate();
@@ -15,13 +16,26 @@ const Login = () => {
   const onSubmit = (data) => {
     const email = data.email;
     const pass = data.password;
-    console.log(data);
+
     loginUser(email, pass)
       .then((userCredential) => {
-        // const user = userCredential.user;
+        const user = userCredential.user;
         sweetToast("Login successful");
         reset();
-        navigate(from, { replace: true });
+
+        // JWT
+        fetch("https://geowild-photography-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: user.email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("geo-token", data.token);
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => {
         const errorCode = error.code;

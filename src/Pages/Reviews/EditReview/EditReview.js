@@ -6,7 +6,7 @@ const EditReview = () => {
   const review = useLoaderData();
   const onSubmit = (data) => {
     console.log(data);
-    fetch(`http://localhost:5000/review/${data.id}`, {
+    fetch(`https://geowild-photography-server.vercel.app/review/${data.id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
