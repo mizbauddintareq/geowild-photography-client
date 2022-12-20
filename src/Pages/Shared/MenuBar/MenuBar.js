@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 
@@ -7,20 +7,26 @@ const MenuBar = () => {
   const { user, userLogOut } = useContext(AuthContext);
   return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar expand="lg">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand>
+            <h1 className="logo">Geo Wild Photography</h1>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
+            <Nav className="ms-auto fw-bold">
               <Link to="/" className="nav-link">
                 Home
               </Link>
               {user?.uid ? (
                 <>
-                  <button onClick={userLogOut}>
-                    <Link className="nav-link">logout</Link>
-                  </button>
+                  <Button
+                    onClick={userLogOut}
+                    className="fw-bold"
+                    variant="light"
+                  >
+                    logout
+                  </Button>
                 </>
               ) : (
                 <Link to="/login" className="nav-link">
