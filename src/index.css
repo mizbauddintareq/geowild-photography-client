@@ -7,3 +7,6 @@ body {
   color: #e63946;
   font-weight: 600;
 }
+.carousel-indicators {
+  display: none;
+}
