@@ -2,7 +2,7 @@
 
 Wild Photography Related Website.
 
-[live link](https://geowild-photography.web.app//)
+[Server](https://github.com/mizbauddintareq/geowild-photography-server)
 
 ## features
 
